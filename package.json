@@ -1,0 +1,9 @@
+{
+    "name": "dormancy", 
+    "license": "MPL 1.1/GPL 2.0/LGPL 2.1", 
+    "author": "Dietrich Ayala", 
+    "version": "1.0", 
+    "fullName": "Dormancy", 
+    "id": "jid1-XvLLp3mhOTiPXg", 
+    "description": "Dormancy 'retires' tabs that have gone unused for a while, freeing up that memory. It then restores the tabs to life when accessed."
+}
