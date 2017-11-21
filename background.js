@@ -1,6 +1,5 @@
 // Age at which tabs should be dormanticized (default 5 mins)
-//const TAB_AGE_MS = 5 * 60 * 1000;
-const TAB_AGE_MS = 15 * 1000;
+const TAB_AGE_MS = 5 * 60 * 1000;
 
 // Storage key
 const TAB_LAST_ACTIVE_KEY = 'DORMANCY_TAB_LAST_ACTIVE';
