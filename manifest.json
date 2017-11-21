@@ -1,0 +1,15 @@
+{
+  "name": "Dormancy",
+  "description": "Dormancy 'retires' tabs that have gone unused for a while. It restores the tabs to life when you next use them.",
+  "version": "2.0.0", 
+  "manifest_version": 2,
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+ 
+  "permissions": [
+    "sessions",
+    "tabs"
+  ]
+}
