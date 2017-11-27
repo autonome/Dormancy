@@ -4,6 +4,9 @@ const TAB_AGE_MS = 5 * 60 * 1000;
 // Storage key
 const TAB_LAST_ACTIVE_KEY = 'DORMANCY_TAB_LAST_ACTIVE';
 
+// Don't discard pinned tabs by default
+const DISCARD_PINNED = false;
+
 // Store the current timestamp on a tab
 async function setTabLastActive(tabId) {
   browser.sessions.setTabValue(tabId, TAB_LAST_ACTIVE_KEY, Date.now());
@@ -45,7 +48,7 @@ async function periodicTabCheck() {
   for (let i in tabs) {
     let tab = tabs[i];
     let isOld = await tabIsOld(tab.id);
-    if (tab.id != activeTabId && !tab.discarded && isOld) {
+    if (tab.id != activeTabId && !tab.discarded && (!tab.pinned || DISCARD_PINNED) && isOld) {
       browser.tabs.discard(tab.id);
     }
   }
