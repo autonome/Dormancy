@@ -40,7 +40,7 @@ async function periodicTabCheck() {
   let activeTabId = activeTabs[0].id;
 
   // Query for all tabs that are not the active tab
-  let tabs = await browser.tabs.query({});
+  let tabs = await browser.tabs.query({pinned: false});
 
   for (let i in tabs) {
     let tab = tabs[i];
