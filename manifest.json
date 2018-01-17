@@ -1,15 +1,28 @@
 {
   "name": "Dormancy",
   "description": "Dormancy 'retires' tabs that have gone unused for a while. It restores the tabs to life when you next use them.",
-  "version": "2.0.2",
+  "version": "3.0.0",
   "manifest_version": 2,
 
   "background": {
     "scripts": ["background.js"]
   },
+
+  "browser_action": {
+    "default_title": "Dormancy",
+    "default_popup": "options.html",
+    "default_icon": {
+      "96": "icon-96.png"
+    }
+  },
  
   "permissions": [
     "sessions",
+    "storage",
     "tabs"
-  ]
+  ],
+
+  "options" : {
+    "timeout": 5
+  }
 }

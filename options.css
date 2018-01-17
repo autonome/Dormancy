@@ -1,0 +1,8 @@
+body {
+  background-color: #000;
+  margin: 0;
+}
+
+div.dg.main li.save-row {
+  display: none;
+}
