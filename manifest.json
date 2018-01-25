@@ -15,6 +15,10 @@
       "96": "icon-96.png"
     }
   },
+
+  "options_ui": {
+    "page": "options.html"
+  },
  
   "permissions": [
     "sessions",
