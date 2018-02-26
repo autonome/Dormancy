@@ -24,8 +24,6 @@
     "page": "options.html"
   },
 
-  "applications": { "gecko": { "id": "a@b" } },
- 
   "permissions": [
     "sessions",
     "storage",
