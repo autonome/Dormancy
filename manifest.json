@@ -1,15 +1,19 @@
 {
-  "name": "Dormancy",
-  "description": "Dormancy 'retires' tabs that have gone unused for a while. It restores the tabs to life when you next use them.",
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
   "version": "3.1.0",
   "manifest_version": 2,
+  "default_locale": "en",
 
   "background": {
-    "scripts": ["background.js"]
+    "scripts": [
+      "shared.js",
+      "background.js"
+    ]
   },
 
   "browser_action": {
-    "default_title": "Dormancy",
+    "default_title": "__MSG_extensionName__",
     "default_popup": "options.html",
     "default_icon": {
       "96": "icon-96.png"
@@ -19,14 +23,12 @@
   "options_ui": {
     "page": "options.html"
   },
+
+  "applications": { "gecko": { "id": "a@b" } },
  
   "permissions": [
     "sessions",
     "storage",
     "tabs"
-  ],
-
-  "options" : {
-    "timeout": 5
-  }
+  ]
 }
