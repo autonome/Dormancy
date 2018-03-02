@@ -8,26 +8,22 @@ const defaults = {
   activeWindow: false
 };
 
-// Returns json obj - either user config or defaults
+let defaultConfig = {
+  timeout: {
+    label: browser.i18n.getMessage('optionTimeout'),
+    value: defaults.timeout
+  },
+  activeWindow: {
+    label: browser.i18n.getMessage('optionActiveWindow'),
+    value: defaults.activeWindow
+  }
+};
+
+// Returns json obj - either user config or default config
 async function loadConfig() {
   let data = await browser.storage.local.get(STORAGE_KEY);
-  let config = null;
-  if (data[STORAGE_KEY]) {
-    console.log('from storage');
-    config = data[STORAGE_KEY];
-  }
-  else {
-    config = {
-      timeout: {
-        label: browser.i18n.getMessage('optionTimeout'),
-        value: defaults.timeout
-      },
-      activeWindow: {
-        label: browser.i18n.getMessage('optionActiveWindow'),
-        value: defaults.activeWindow
-      }
-    };
-  }
+  let firstInstall = !(STORAGE_KEY in data) || !('activeWindow' in data[STORAGE_KEY])
+  let config = firstInstall ? defaultConfig : data[STORAGE_KEY];
   return config;
 }
 

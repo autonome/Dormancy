@@ -3,6 +3,15 @@ body {
   margin: 0;
 }
 
+/* dat.gui boolean fields */
+div.dg.main li.cr.boolean > div > span {
+  width: 85%;
+}
+div.dg.main li.cr.boolean > div > div {
+  width: 15%;
+}
+
+/* hide save button */
 div.dg.main li.save-row {
   display: none;
 }

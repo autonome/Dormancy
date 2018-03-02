@@ -85,7 +85,7 @@
     config = await loadConfig();
     
     // Reset timer if timeout value changed
-    if (config.timeout.value != oldConfig.timeout.value) {
+    if (!timerId || (oldConfig.timeout.value && (config.timeout.value != oldConfig.timeout.value))) {
       if (timerId) {
         clearInterval(timerId);
       }
