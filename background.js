@@ -41,6 +41,10 @@
     return false;
   }
 
+  function websiteIsExcluded({ url }) {
+    return config.excludedWebsites.value.some(w => url.startsWith(w));
+  }
+
   // Check for tabs that have hit dormanticizable age and dormanticize them.
   async function periodicTabCheck() {
     // Query for the active tab
@@ -54,6 +58,10 @@
 
     for (let i in tabs) {
       let tab = tabs[i];
+      if (websiteIsExcluded(tab)) {
+        console.log(tab.url, "excluded");
+        continue;
+      }
       let isOld = await tabIsOld(tab.id);
       if (
         // only sleep if isn't the active tab
@@ -83,7 +91,7 @@
     // Load (or reload) config from storage
     let oldConfig = config;
     config = await loadConfig();
-    
+
     // Reset timer if timeout value changed
     if (!timerId || (oldConfig.timeout.value && (config.timeout.value != oldConfig.timeout.value))) {
       if (timerId) {

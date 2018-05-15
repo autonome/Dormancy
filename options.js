@@ -7,6 +7,7 @@
   let guiConfig = {};
   guiConfig[ config.timeout.label ] = config.timeout.value;
   guiConfig[ config.activeWindow.label ] = config.activeWindow.value;
+  guiConfig[ config.excludedWebsites.label ] = config.excludedWebsites.value.join(", ");
 
   function onLoad() {
     // Initialize dat.GUI
@@ -20,6 +21,9 @@
     // Add active window setting to dat.GUI, set up event handler
     gui.add(guiConfig, config.activeWindow.label).onChange(onChange);
 
+    // Add list of excluded websites setting to dat.GUI, set up event handler
+    gui.add(guiConfig, config.excludedWebsites.label).onChange(onChange);
+
     // Add dat.GUI to extension UI
     document.body.appendChild(gui.domElement);
   }
@@ -28,6 +32,7 @@
   async function onChange() {
     config.timeout.value = guiConfig[ config.timeout.label ];
     config.activeWindow.value = guiConfig[ config.activeWindow.label ];
+    config.excludedWebsites.value = guiConfig[ config.excludedWebsites.label ].split(/[ ,]+/);
     saveConfig(config);
   }
 
