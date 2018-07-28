@@ -28,5 +28,11 @@
     "sessions",
     "storage",
     "tabs"
-  ]
+  ],
+
+  "applications": {
+    "gecko": {
+      "id": "dormancy@autonome.github.io"
+    }
+  }
 }
