@@ -14,5 +14,9 @@
   "optionActiveWindow": {
     "message": "Keep active window alive",
     "description": "Label for option for whether to put tabs to sleep in the active window."
+  },
+  "optionExcludedWebsites": {
+    "message": "Prevent the following websites from being retired",
+    "description": "Comma separated list of websites URLs."
   }
 }

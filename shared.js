@@ -5,7 +5,8 @@ const STORAGE_KEY = 'dormancy.configuration';
 // Default values for options
 const defaults = {
   timeout: 10,
-  activeWindow: false
+  activeWindow: false,
+  excludedWebsites: []
 };
 
 let defaultConfig = {
@@ -16,14 +17,17 @@ let defaultConfig = {
   activeWindow: {
     label: browser.i18n.getMessage('optionActiveWindow'),
     value: defaults.activeWindow
+  },
+  excludedWebsites: {
+    label: browser.i18n.getMessage('optionExcludedWebsites'),
+    value: defaults.excludedWebsites
   }
 };
 
 // Returns json obj - either user config or default config
 async function loadConfig() {
   let data = await browser.storage.local.get(STORAGE_KEY);
-  let firstInstall = !(STORAGE_KEY in data) || !('activeWindow' in data[STORAGE_KEY])
-  let config = firstInstall ? defaultConfig : data[STORAGE_KEY];
+  let config = { ...defaultConfig, ...data[STORAGE_KEY] };
   return config;
 }
 
@@ -33,4 +37,4 @@ async function saveConfig(data) {
   saveData[STORAGE_KEY] = data;
   browser.storage.local.set(saveData).then(null, console.error);
 }
-  
+
