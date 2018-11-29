@@ -12,6 +12,7 @@
   let gui = new dat.GUI({
     autoPlace: false
   });
+  gui.domElement.id = 'gui_css';
 
   // Add timeout setting to dat.GUI, set up event handler
   gui.add(guiConfig, config.timeout.label, 1, 60, 1).onChange(onChange);
