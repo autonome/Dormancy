@@ -65,7 +65,6 @@
     for (let i in tabs) {
       let tab = tabs[i];
       if (websiteIsExcluded(tab)) {
-        console.log(tab.url, "excluded");
         continue;
       }
       let isOld = await tabIsOld(tab.id);

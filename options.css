@@ -16,12 +16,18 @@ div.dg.main li.save-row {
   display: none;
 }
 
-/* set minimum width so that text field labels show completely */
+/* set minimum width so that text field labels show reasonably */
 #gui_css {
-  min-width: 300px;
+  min-width: 400px;
 }
 
 /* hide the close button entirely */
 .dg.main .close-button {
   display: none;
+}
+
+/* let property names expand to the size of their text contents */
+.dg li:not(.folder) {
+  height: auto;
+  min-height: 27px;
 }
