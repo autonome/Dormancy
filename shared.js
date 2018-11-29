@@ -4,9 +4,9 @@ const STORAGE_KEY = 'dormancy.configuration';
 
 // Default values for options
 const defaults = {
-  timeout: 5,
+  timeout: 10,
   activeWindow: false,
-  excludedWebsites: ['https://www.youtube.com', 'https://appear.in']
+  excludedWebsites: []
 };
 
 let defaultConfig = {

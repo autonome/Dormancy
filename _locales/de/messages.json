@@ -4,19 +4,15 @@
     "description": "Name of the extension."
   },
   "extensionDescription": {
-    "message": "Dormancy 'retires' tabs that have gone unused for a while. It restores the tabs to life when you next use them.",
+    "message": "Dormancy 'schläfert' Tabs ein, die eine Zeit lang nicht genutzt wurden. Es stellt die Tabs wieder her, wenn Sie diese das nächste mal nutzen.",
     "description": "Description of the extension."
   },
   "optionTimeout": {
-    "message": "Timeout in minutes",
+    "message": "Timeout (in Minuten)",
     "description": "Label for option for how many minutes to wait before putting tabs to sleep."
   },
   "optionActiveWindow": {
-    "message": "Keep active window alive",
+    "message": "Halte das aktive Fenster am Leben",
     "description": "Label for option for whether to put tabs to sleep in the active window."
-  },
-  "optionExcludedWebsites": {
-    "message": "Prevent the following websites from being retired",
-    "description": "Comma separated list of websites URLs."
   }
 }

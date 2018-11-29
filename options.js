@@ -9,25 +9,23 @@
   guiConfig[ config.activeWindow.label ] = config.activeWindow.value;
   guiConfig[ config.excludedWebsites.label ] = config.excludedWebsites.value.join(", ");
 
-  function onLoad() {
-    // Initialize dat.GUI
-    let gui = new dat.GUI({
-      autoPlace: false
-    });
+  // Initialize dat.GUI
+  let gui = new dat.GUI({
+    autoPlace: false
+  });
+  gui.domElement.id = 'gui_css';
 
-    // Add timeout setting to dat.GUI, set up event handler
-    gui.add(guiConfig, config.timeout.label, 1, 60, 1).onChange(onChange);
+  // Add timeout setting to dat.GUI, set up event handler
+  gui.add(guiConfig, config.timeout.label, 1, 60, 1).onChange(onChange);
 
-    // Add active window setting to dat.GUI, set up event handler
-    gui.add(guiConfig, config.activeWindow.label).onChange(onChange);
+  // Add active window setting to dat.GUI, set up event handler
+  gui.add(guiConfig, config.activeWindow.label).onChange(onChange);
 
-    // Add list of excluded websites setting to dat.GUI, set up event handler
-    gui.add(guiConfig, config.excludedWebsites.label).onChange(onChange);
+  // Add list of excluded websites setting to dat.GUI, set up event handler
+  gui.add(guiConfig, config.excludedWebsites.label).onChange(onChange);
 
-    // Add dat.GUI to extension UI
-    document.body.appendChild(gui.domElement);
-  }
-  window.onload = onLoad;
+  // Add dat.GUI to extension UI
+  document.body.appendChild(gui.domElement);
 
   async function onChange() {
     config.timeout.value = guiConfig[ config.timeout.label ];

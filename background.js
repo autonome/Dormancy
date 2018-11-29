@@ -48,13 +48,19 @@
   // Check for tabs that have hit dormanticizable age and dormanticize them.
   async function periodicTabCheck() {
     // Query for the active tab
-    let activeTabs = await browser.tabs.query({ active: true, currentWindow: true })
-    let activeTabId = activeTabs[0].id;
     let activeWindow = await browser.windows.getCurrent();
     let activeWindowId = activeWindow.id;
 
     // Query for all tabs that are not the active tab
-    let tabs = await browser.tabs.query({pinned: false});
+    let tabs = await browser.tabs.query({
+        pinned: false,
+        // only sleep if isn't the active tab
+        active: false,
+        // only sleep if not already asleep
+        discarded: false,
+        // do not sleep tabs that play sound
+        audible: false
+    });
 
     for (let i in tabs) {
       let tab = tabs[i];
@@ -64,12 +70,8 @@
       }
       let isOld = await tabIsOld(tab.id);
       if (
-        // only sleep if isn't the active tab
-        tab.id != activeTabId
-        // only sleep if not already asleep
-        && !tab.discarded
         // only sleep if tab has aged past the timeout option
-        && isOld
+        isOld
         // only sleep if the activeWindow option is false
         // or the tab is not in the active window
         && (!config.activeWindow.value || tab.windowId != activeWindowId)

@@ -15,3 +15,13 @@ div.dg.main li.cr.boolean > div > div {
 div.dg.main li.save-row {
   display: none;
 }
+
+/* set minimum width so that text field labels show completely */
+#gui_css {
+  min-width: 300px;
+}
+
+/* hide the close button entirely */
+.dg.main .close-button {
+  display: none;
+}
