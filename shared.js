@@ -4,7 +4,7 @@ const STORAGE_KEY = 'dormancy.configuration';
 
 // Default values for options
 const defaults = {
-  timeout: 5,
+  timeout: 10,
   activeWindow: false
 };
 
