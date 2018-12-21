@@ -42,7 +42,7 @@
   }
 
   function websiteIsExcluded({ url }) {
-    return config.excludedWebsites.value.some(w => url.startsWith(w));
+    return config.excludedWebsites.value.some(w => w.length && url.startsWith(w));
   }
 
   // Check for tabs that have hit dormanticizable age and dormanticize them.
