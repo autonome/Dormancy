@@ -28,7 +28,7 @@ function ___$insertStyle(css) {
   var style = document.createElement('style');
 
   style.setAttribute('type', 'text/css');
-  style.innerHTML = css;
+  style.textContent = css;
   document.head.appendChild(style);
 
   return css;
@@ -976,7 +976,7 @@ var OptionController = function (_Controller) {
     }
     Common.each(options, function (value, key) {
       var opt = document.createElement('option');
-      opt.innerHTML = key;
+      opt.textContent = key;
       opt.setAttribute('value', value);
       _this.__select.appendChild(opt);
     });
@@ -1259,7 +1259,7 @@ var FunctionController = function (_Controller) {
     var _this2 = possibleConstructorReturn(this, (FunctionController.__proto__ || Object.getPrototypeOf(FunctionController)).call(this, object, property));
     var _this = _this2;
     _this2.__button = document.createElement('div');
-    _this2.__button.innerHTML = text === undefined ? 'Fire' : text;
+    _this2.__button.textContent = text === undefined ? 'Fire' : text;
     dom.bind(_this2.__button, 'click', function (e) {
       e.preventDefault();
       _this.fire();
@@ -1549,7 +1549,7 @@ var css = {
     var doc = indoc || document;
     var injected = document.createElement('style');
     injected.type = 'text/css';
-    injected.innerHTML = cssContent;
+    injected.textContent = cssContent;
     var head = doc.getElementsByTagName('head')[0];
     try {
       head.appendChild(injected);
@@ -1781,7 +1781,7 @@ var GUI = function GUI(pars) {
       set: function set$$1(v) {
         params.name = v;
         if (titleRow) {
-          titleRow.innerHTML = params.name;
+          titleRow.textContent = params.name;
         }
       }
     },
@@ -1798,7 +1798,7 @@ var GUI = function GUI(pars) {
         }
         this.onResize();
         if (_this.__closeButton) {
-          _this.__closeButton.innerHTML = v ? GUI.TEXT_OPEN : GUI.TEXT_CLOSED;
+          _this.__closeButton.textContent = v ? GUI.TEXT_OPEN : GUI.TEXT_CLOSED;
         }
       }
     },
@@ -1838,7 +1838,7 @@ var GUI = function GUI(pars) {
       }
     }
     this.__closeButton = document.createElement('div');
-    this.__closeButton.innerHTML = GUI.TEXT_CLOSED;
+    this.__closeButton.textContent = GUI.TEXT_CLOSED;
     dom.addClass(this.__closeButton, GUI.CLASS_CLOSE_BUTTON);
     if (params.closeOnTop) {
       dom.addClass(this.__closeButton, GUI.CLASS_CLOSE_TOP);
@@ -2046,7 +2046,7 @@ Common.extend(GUI.prototype,
   remember: function remember() {
     if (Common.isUndefined(SAVE_DIALOGUE)) {
       SAVE_DIALOGUE = new CenteredDiv();
-      SAVE_DIALOGUE.domElement.innerHTML = saveDialogContents;
+      SAVE_DIALOGUE.domElement.textContent = saveDialogContents;
     }
     if (this.parent) {
       throw new Error('You can only call remember on a top level GUI.');
@@ -2161,9 +2161,9 @@ function removeListeners(gui) {
 function markPresetModified(gui, modified) {
   var opt = gui.__preset_select[gui.__preset_select.selectedIndex];
   if (modified) {
-    opt.innerHTML = opt.value + '*';
+    opt.textContent = opt.value + '*';
   } else {
-    opt.innerHTML = opt.value;
+    opt.textContent = opt.value;
   }
 }
 function augmentController(gui, li, controller) {
@@ -2189,7 +2189,7 @@ function augmentController(gui, li, controller) {
       }
     },
     name: function name(_name) {
-      controller.__li.firstElementChild.firstElementChild.innerHTML = _name;
+      controller.__li.firstElementChild.firstElementChild.textContent = _name;
       return controller;
     },
     listen: function listen() {
@@ -2310,7 +2310,7 @@ function _add(gui, object, property, params) {
   dom.addClass(controller.domElement, 'c');
   var name = document.createElement('span');
   dom.addClass(name, 'property-name');
-  name.innerHTML = controller.property;
+  name.textContent = controller.property;
   var container = document.createElement('div');
   container.appendChild(name);
   container.appendChild(controller.domElement);
@@ -2330,7 +2330,7 @@ function getLocalStorageHash(gui, key) {
 }
 function addPresetOption(gui, name, setSelected) {
   var opt = document.createElement('option');
-  opt.innerHTML = name;
+  opt.textContent = name;
   opt.value = name;
   gui.__preset_select.appendChild(opt);
   if (setSelected) {
@@ -2346,18 +2346,18 @@ function addSaveMenu(gui) {
   gui.__ul.insertBefore(div, gui.__ul.firstChild);
   dom.addClass(div, 'save-row');
   var gears = document.createElement('span');
-  gears.innerHTML = '&nbsp;';
+  gears.textContent = '&nbsp;';
   dom.addClass(gears, 'button gears');
   var button = document.createElement('span');
-  button.innerHTML = 'Save';
+  button.textContent = 'Save';
   dom.addClass(button, 'button');
   dom.addClass(button, 'save');
   var button2 = document.createElement('span');
-  button2.innerHTML = 'New';
+  button2.textContent = 'New';
   dom.addClass(button2, 'button');
   dom.addClass(button2, 'save-as');
   var button3 = document.createElement('span');
-  button3.innerHTML = 'Revert';
+  button3.textContent = 'Revert';
   dom.addClass(button3, 'button');
   dom.addClass(button3, 'revert');
   var select = gui.__preset_select = document.createElement('select');
@@ -2370,7 +2370,7 @@ function addSaveMenu(gui) {
   }
   dom.bind(select, 'change', function () {
     for (var index = 0; index < gui.__preset_select.length; index++) {
-      gui.__preset_select[index].innerHTML = gui.__preset_select[index].value;
+      gui.__preset_select[index].textContent = gui.__preset_select[index].value;
     }
     gui.preset = this.value;
   });
@@ -2400,7 +2400,7 @@ function addSaveMenu(gui) {
     }
   });
   dom.bind(gears, 'click', function () {
-    newConstructorTextArea.innerHTML = JSON.stringify(gui.getSaveObject(), undefined, 2);
+    newConstructorTextArea.textContent = JSON.stringify(gui.getSaveObject(), undefined, 2);
     SAVE_DIALOGUE.show();
     newConstructorTextArea.focus();
     newConstructorTextArea.select();
