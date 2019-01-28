@@ -14,5 +14,25 @@
   "optionActiveWindow": {
     "message": "Halte das aktive Fenster am Leben",
     "description": "Label for option for whether to put tabs to sleep in the active window."
+  },
+  "menuGroup": {
+    "message": "Dormancy - 'Einschläfern' von Tabs",
+    "description": "Menu group for the extension at tab context."
+  },
+  "menuDiscardSelected": {
+    "message": "Au&sgewählte Tabs 'einschläfern'",
+    "description": "Menu item to put all selected / highlighted tabs to sleep."
+  },
+  "menuDiscardLeft": {
+    "message": "Tabs &links 'einschläfern'",
+    "description": "Menu item to put tabs to the left in the same window to sleep."
+  },
+  "menuDiscardRight": {
+    "message": "Tabs &rechts 'einschläfern'",
+    "description": "Menu item to put tabs to the right in the same window to sleep."
+  },
+  "menuDiscardOther": {
+    "message": "&Andere Tabs im Fenster 'einschläfern'",
+    "description": "Menu item to put all other tabs in the same window to sleep."
   }
 }

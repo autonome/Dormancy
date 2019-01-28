@@ -18,5 +18,25 @@
   "optionExcludedWebsites": {
     "message": "Keep these URLs alive (separated by commas)",
     "description": "Comma separated list of website URLs."
+  },
+  "menuGroup": {
+    "message": "Dormancy - Put tabs to sleep",
+    "description": "Menu group for the extension at tab context."
+  },
+  "menuDiscardSelected": {
+    "message": "Put &selected tabs to sleep",
+    "description": "Menu item to put all selected / highlighted tabs to sleep."
+  },
+  "menuDiscardLeft": {
+    "message": "Put tabs to the &left to sleep",
+    "description": "Menu item to put tabs to the left in the same window to sleep."
+  },
+  "menuDiscardRight": {
+    "message": "Put tabs to the &right to sleep",
+    "description": "Menu item to put tabs to the right in the same window to sleep."
+  },
+  "menuDiscardOther": {
+    "message": "Put &other tabs of window to sleep",
+    "description": "Menu item to put all other tabs in the same window to sleep."
   }
 }
