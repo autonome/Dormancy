@@ -1,7 +1,10 @@
 {
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
-  "version": "3.4.3",
+  "icons": {
+    "96": "icon-96.png"
+  },
+  "version": "3.5.0",
   "manifest_version": 2,
   "default_locale": "en",
 
@@ -25,6 +28,7 @@
   },
 
   "permissions": [
+    "menus",
     "sessions",
     "storage",
     "tabs"
