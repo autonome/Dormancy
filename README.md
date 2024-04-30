@@ -4,7 +4,7 @@ Tabs are considered inactive when they haven't been selected in longer than 10 m
 
 Tabs are checked for inactivity every 10 minutes.
 
-Install: https://addons.mozilla.org/en-US/firefox/addon/dormancy/
+Install: https://addons.mozilla.org/firefox/addon/dormancy/
 
 Note:
 
