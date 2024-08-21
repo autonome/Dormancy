@@ -1,5 +1,8 @@
 'use strict';
 
+// console toggle
+console.log = function () {};
+
 (async () => {
   // Session storage key
   const TAB_LAST_ACTIVE_KEY = 'DORMANCY_TAB_LAST_ACTIVE';
@@ -47,7 +50,9 @@
 
   // Check for tabs that have hit dormanticizable age and dormanticize them.
   async function periodicTabCheck() {
-    // Query for the active tab
+    console.log('periodicTabCheck()');
+
+    // Query for the active window
     let activeWindow = await browser.windows.getCurrent();
     let activeWindowId = activeWindow.id;
 
@@ -58,16 +63,23 @@
         active: false,
         // only sleep if not already asleep
         discarded: false,
-        // do not sleep tabs that play sound
+        // do not sleep tabs that are playing sound
         audible: false
     });
 
+    console.log('periodicTabCheck(): tabs', tabs.length);
+
     for (let i in tabs) {
+
       let tab = tabs[i];
+
       if (websiteIsExcluded(tab)) {
+        console.log('periodicTabCheck(): website is excluded', tab);
         continue;
       }
+
       let isOld = await tabIsOld(tab.id);
+
       if (
         // only sleep if tab has aged past the timeout option
         isOld
@@ -75,7 +87,12 @@
         // or the tab is not in the active window
         && (!config.activeWindow.value || tab.windowId != activeWindowId)
       ) {
+        console.log('discarding tab', tab);
         browser.tabs.discard(tab.id);
+      }
+      else {
+        // not discarding tab
+        console.log('not discarding tab', tab);
       }
     }
   }
@@ -89,6 +106,7 @@
 
   // Start everything. Or cancel what's going on and restart.
   async function init() {
+    console.log('init');
     // Load (or reload) config from storage
     let oldConfig = config;
     config = await loadConfig();
@@ -101,6 +119,7 @@
       let timeoutInMS = config.timeout.value * 60 * 1000;
       timerId = setInterval(periodicTabCheck, timeoutInMS);
     }
+    console.log('init done');
   }
 
   // Extension startup
